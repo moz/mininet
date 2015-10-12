@@ -54,6 +54,11 @@ Vagrant.configure(2) do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 4096
+    vb.cpus = 4
+  end
+
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
   # such as FTP and Heroku are also available. See the documentation at
   # https://docs.vagrantup.com/v2/push/atlas.html for more information.
@@ -68,4 +73,8 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+
+  config.vm.provision "shell", path: "provisioner/update-guest.sh"
+  config.vm.provision "shell", path: "provisioner/install-mininet.sh", privileged: false
+  config.vm.provision "shell", path: "provisioner/install-ditg.sh", privileged: false
 end
