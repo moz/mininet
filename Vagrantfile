@@ -77,4 +77,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "provisioner/update-guest.sh"
   config.vm.provision "shell", path: "provisioner/install-mininet.sh", privileged: false
   config.vm.provision "shell", path: "provisioner/install-ditg.sh", privileged: false
+  config.vm.provision "shell", path: "provisioner/install-ntop.sh", privileged: false
 end
