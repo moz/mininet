@@ -1,0 +1,13 @@
+ntop
+1 *** Results: ['958 Kbits/sec', '1.58 Mbits/sec'] CPU idle 98.96
+10 *** Results: ['8.42 Mbits/sec', '9.73 Mbits/sec'] CPU idle 97.91
+100 *** Results: ['59.2 Mbits/sec', '60.2 Mbits/sec'] CPU idle 95.01
+1000 *** Results: ['505 Mbits/sec', '506 Mbits/sec'] CPU idle 89.38
+10000 *** Results: ['5.85 Gbits/sec', '5.86 Gbits/sec'] CPU idle 78.33
+
+no-ntop
+1 *** Results: ['951 Kbits/sec', '1.44 Mbits/sec'] CPU idle 99.63
+10 *** Results: ['8.86 Mbits/sec', '10.1 Mbits/sec'] CPU idle 99.07
+100 *** Results: ['65.3 Mbits/sec', '67.2 Mbits/sec'] CPU idle 97.52
+1000 *** Results: ['413 Mbits/sec', '414 Mbits/sec'] CPU idle 95.60
+10000 *** Results: ['13.9 Gbits/sec', '13.9 Gbits/sec'] CPU idle 77.08
