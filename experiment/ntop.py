@@ -23,7 +23,7 @@ class Topology(Topo):
     def __init__(self, bandwidth, **opts):
         Topo.__init__(self, **opts)
 
-        r0 = self.addHost('r0', cls=LinuxRouter, ip='192.168.1.1/24')
+        r0 = self.addNode('r0', cls=LinuxRouter, ip='192.168.1.1/24')
 
         s1, s2 = [ self.addSwitch(s) for s in 's1', 's2' ]
 
