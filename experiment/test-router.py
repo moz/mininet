@@ -42,18 +42,26 @@ class NetworkTopo(Topo):
         self.addLink(h1, s1)
         self.addLink(h2, s2)
 
+
+def set_limit(host, eth, bw):
+    host.cmd('ethtool -K %s gro off' % eth)
+    host.cmd('tc qdisc add dev %s root handle 5:0 htb default 1' % eth)
+    host.cmd('tc class add dev %s parent 5:0 classid 5:1 htb rate %dMbit burst 15k' % (eth, bw))
+
 def run():
     topo = NetworkTopo()
     net = Mininet(topo)
-
-    s3 = net.get('s3')
-    #net.addNAT(connect=s3, ip='192.168.3.1/24').configDefault()
 
     net.start()
     dumpNodeConnections(net.hosts)
     net.pingAll()
 
     r0 = net.get('r0')
+
+    limit = 50 #<< set limit disini dalam Mbit
+    set_limit(r0, 'r0-eth1', limit)
+    set_limit(r0, 'r0-eth2', limit)
+
     r0.cmd('redis-server > /tmp/redis-log 2>&1 &')
     r0.cmd('ntopng > /tmp/ntop-log 2>&1 &')
 
@@ -67,3 +75,4 @@ def run():
 if __name__ == '__main__':
     setLogLevel('info')
     run()
+
