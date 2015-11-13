@@ -58,6 +58,10 @@ def run():
     r0.cmd('ntopng > /tmp/ntop-log 2>&1 &')
 
     CLI(net)
+
+    r0.cmd('killall ntopng')
+    r0.cmd('killall redis-server')
+
     net.stop()
 
 if __name__ == '__main__':
