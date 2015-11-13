@@ -56,7 +56,8 @@ def run():
     dumpNodeConnections(net.hosts)
     net.pingAll()
 
-    r0 = net.get('r0')
+    r0, nat = [net.get(h) for h in 'r0', 'nat']
+    nat.cmd("iptables -t 'nat' -A PREROUTING -p tcp -i eth0 --dport 3000 -j DNAT --to-destination 192.168.3.2:3000")
 
     limit = 50 #<< set limit disini dalam Mbit
     set_limit(r0, 'r0-eth1', limit)
